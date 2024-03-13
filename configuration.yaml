@@ -12,7 +12,7 @@ frontend:
 
 automation ui: !include automations.yaml
 script: !include includes/script.yaml
-scene: !include scenes.yaml
+scene: !include includes/scenes.yaml
 shell_command: !include includes/shell_command.yaml
 
 

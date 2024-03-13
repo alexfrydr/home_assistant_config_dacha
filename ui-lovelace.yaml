@@ -1,8 +1,12 @@
 title: Home
 views:
 
+#=================================================================================================
+#                        Управление домиком
+#=================================================================================================
+
   - title: Home
-    icon: mdi:home-assistant
+    icon: mdi:home-circle
     cards:
       - type: vertical-stack
         cards:
@@ -22,8 +26,12 @@ views:
                     font-family: var(--primary-font-family);
                     --card-background-color: none
 
-  - title: Devices
-    icon: mdi:source-pull
+#=================================================================================================
+#                           Управление теплицей
+#=================================================================================================
+
+  - title: Greenhouse
+    icon: mdi:greenhouse
     cards:
     
         - type: vertical-stack
@@ -42,6 +50,35 @@ views:
             #   show_header_toggle: false
             #   cards:
             #   entities:
+
+#=================================================================================================
+#                           Управление баней
+#=================================================================================================
+
+  - title: Bathhouse
+    icon: mdi:bathtub-outline
+    cards:
+    
+        - type: vertical-stack
+          cards:
+            - type: markdown
+              content: '## Clock automations'
+              style: |
+                ha-card {
+                  box-shadow: none;
+                  border: none;
+                  background: none;
+                  font-family: var(--primary-font-family);
+                  --card-background-color: none
+                }
+            # - type: entities
+            #   show_header_toggle: false
+            #   cards:
+            #   entities:
+
+#=================================================================================================
+#                           Система
+#=================================================================================================
 
   - title: System
     icon: mdi:cog
