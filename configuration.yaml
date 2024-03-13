@@ -1,4 +1,8 @@
-
+homeassistant:
+  packages: !include_dir_merge_named includes/packages
+  allowlist_external_dirs:
+   - /config/
+   
 # Loads default set of integrations. Do not remove.
 default_config:
 
@@ -9,6 +13,7 @@ frontend:
 automation ui: !include automations.yaml
 script: !include includes/script.yaml
 scene: !include scenes.yaml
+shell_command: !include includes/shell_command.yaml
 
 
 recorder: !include includes/recorder.yaml
