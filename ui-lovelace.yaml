@@ -198,17 +198,50 @@ views:
               name: Input Select
             - entity: sensor.count_input_datetimes
               name: Input Date Times
-            # - entity: sensor.unavailable_now_binary_sensor
-            #   name: Binary Sensors Un
-            # - entity: sensor.unavailable_now_switch
-            #   name: Switches Un
-            # - entity: sensor.unavailable_now_light
-            #   name: Lights Un
-            # - entity: sensor.unavailable_now_sensor
-            #   name: Sensor Un
             - entity: sensor.count_script_off
               name: Script OFF
             - entity: sensor.count_script_on
               name: Script ON
             - entity: sensor.count_automation_off
               name: Automation OFF
+              
+              
+              
+##########################################################################
+#                                                                        #
+#                              * КОЛОНКА 3 *                             #
+#                                                                        #
+##########################################################################
+
+
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: '## Google Backup'
+            style: |
+              ha-card {
+                box-shadow: none;
+                border: none;
+                background: none;
+                font-family: var(--primary-font-family);
+                --card-background-color: none
+              }
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: sensor.last_google_backup_main
+              - entity: sensor.backups_in_google_drive
+                type: custom:multiple-entity-row
+                name: Резервные копии
+                state_header: Google Drive
+                entities:
+                  - entity: sensor.backups_in_home_assistant
+                    name: Сервер
+              - entity: sensor.size_in_google_drive
+                type: custom:multiple-entity-row
+                name: Занято на
+                state_header: Google Drive
+                entities:
+                  - entity: sensor.size_in_home_assistant
+                    name: Сервере
