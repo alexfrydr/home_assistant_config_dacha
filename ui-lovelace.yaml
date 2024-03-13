@@ -1,0 +1,214 @@
+title: Home
+views:
+
+  - title: Home
+    icon: mdi:home-assistant
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: markdown
+                content: >-
+                  {% if now().hour < 5 %} ## Good night {% elif now().hour < 12 %}
+                  ## Good morning {% elif now().hour < 18 %} ## Good afternoon {%
+                  elif now().hour >= 23 %} ## It's getting late! {% else %} ## Have
+                  a nice evening {% endif %}
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    border: none;
+                    background: none;
+                    font-family: var(--primary-font-family);
+                    --card-background-color: none
+
+  - title: Devices
+    icon: mdi:source-pull
+    cards:
+    
+        - type: vertical-stack
+          cards:
+            - type: markdown
+              content: '## Clock automations'
+              style: |
+                ha-card {
+                  box-shadow: none;
+                  border: none;
+                  background: none;
+                  font-family: var(--primary-font-family);
+                  --card-background-color: none
+                }
+            # - type: entities
+            #   show_header_toggle: false
+            #   cards:
+            #   entities:
+
+  - title: System
+    icon: mdi:cog
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: markdown
+          content: '## System'
+          style: |
+            ha-card {
+              box-shadow: none;
+              border: none;
+              background: none;
+              font-family: var(--primary-font-family);
+              --card-background-color: none
+            }
+        - type: custom:stack-in-card
+          cards:
+          - type: horizontal-stack
+            cards: 
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.system_monitor_processor_use 
+                  name: CPU 
+                  hours_to_show: 12
+                  points_per_hour: 4
+              color_thresholds:
+                - value: 35
+                  color: "#00ff21"
+                - value: 45
+                  color: "#f6ff00"
+                - value: 50
+                  color: "#ff6600"
+                - value: 55
+                  color: "#ff1800"
+              show:
+                fill: false
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.system_monitor_processor_temperature
+                  name: CPU 
+                  hours_to_show: 12
+                  points_per_hour: 4
+              color_thresholds:
+                - value: 35
+                  color: "#00ff21"
+                - value: 45
+                  color: "#f6ff00"
+                - value: 50
+                  color: "#ff6600"
+                - value: 55
+                  color: "#ff1800"
+              show:
+                fill: false
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.system_monitor_memory_usage
+                  name: Memory
+                  hours_to_show: 12
+                  points_per_hour: 4
+              color_thresholds:
+                - value: 35
+                  color: "#00ff21"
+                - value: 80
+                  color: "#f6ff00"
+                - value: 85
+                  color: "#ff6600"
+                - value: 90
+                  color: "#ff1800"
+              show:
+                fill: false
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.system_monitor_disk_usage
+                  name: Disk 
+                  hours_to_show: 12
+                  points_per_hour: 4
+              color_thresholds:
+                - value: 30
+                  color: "#00ff21"
+                - value: 80
+                  color: "#f6ff00"
+                - value: 85
+                  color: "#ff6600"
+                - value: 90
+                  color: "#ff1800"
+              show:
+                fill: false
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - entity: sensor.date
+              name: Date
+              icon: mdi:calendar-check-outline
+            - entity: sensor.uptime
+              icon: mdi:home-assistant
+            - entity: sensor.last_boot
+              icon: mdi:calendar
+            - entity: sensor.maria_db_size
+              name: DB size
+              icon: mdi:database
+            - entity: sensor.local_ip
+              name: Local ip
+            - entity: binary_sensor.internet_is_available
+              name: Internet 
+            
+
+
+
+##########################################################################
+#                                                                        #
+#                              * КОЛОНКА 2 *                             #
+#                                                                        #
+##########################################################################
+
+
+
+
+      - type: vertical-stack
+        cards:
+        - type: markdown
+          content: '## Component Count'
+          style: |
+            ha-card {
+              box-shadow: none;
+              border: none;
+              background: none;
+              font-family: var(--primary-font-family);
+              --card-background-color: none
+            }
+        - type: glance
+          entities:
+            - entity: sensor.count_automations
+              name: Automations
+            - entity: sensor.count_scripts
+              name: Scripts
+            - entity: sensor.count_zones
+              name: Zones
+            - entity: sensor.count_device_trackers
+              name: Device Trackers
+            - entity: sensor.count_switches
+              name: Switches
+            - entity: sensor.count_sensors
+              name: Sensors
+            - entity: sensor.count_binary_sensors
+              name: Binary Sensors
+            - entity: sensor.count_input_booleans
+              name: Input Booleans
+            - entity: sensor.count_input_numbers
+              name: Input Numbers
+            - entity: sensor.count_input_texts
+              name: Input Texts
+            - entity: sensor.count_input_selects
+              name: Input Select
+            - entity: sensor.count_input_datetimes
+              name: Input Date Times
+            # - entity: sensor.unavailable_now_binary_sensor
+            #   name: Binary Sensors Un
+            # - entity: sensor.unavailable_now_switch
+            #   name: Switches Un
+            # - entity: sensor.unavailable_now_light
+            #   name: Lights Un
+            # - entity: sensor.unavailable_now_sensor
+            #   name: Sensor Un
+            - entity: sensor.count_script_off
+              name: Script OFF
+            - entity: sensor.count_script_on
+              name: Script ON
+            - entity: sensor.count_automation_off
+              name: Automation OFF

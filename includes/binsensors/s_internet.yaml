@@ -1,0 +1,6 @@
+# Сенсор доступности интернет соединения
+- platform: template
+  sensors:
+    internet_is_available:
+      value_template: "{{ states('binary_sensor.google_com') == 'on' or states('binary_sensor.ya_ru') == 'on' }}"
+      device_class: connectivity
